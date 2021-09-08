@@ -19,12 +19,14 @@ namespace MessingAround
 		public void Test1()
 		{
 			Driver.Navigate().GoToUrl("https://demowf.aspnetawesome.com");
-			Driver.FindElement(By.Id("ContentPlaceHolder1_Meal")).SendKeys("Tomato");
-			Driver.FindElement(By.XPath("//input[@name='ctl00$ContentPlaceHolder1$ChildMeal1']/following-sibling::div[text()='Celery']")).Click();
 
+			//CustomControl.EnterText(Driver.FindElement(By.Id("ContentPlaceHolder1_Meal")),"Mango");
+			//CustomControl.Click(Driver.FindElement(By.XPath("//input[@name='ctl00$ContentPlaceHolder1$ChildMeal1']/following-sibling::div[text()='Celery']")));
+
+			CustomControl.SelectByText(Driver.FindElement(By.Id("ContentPlaceHolder1_Add1-awed")), "Cauliflower");
+			
 			CustomControl.ComboBox("ContentPlaceHolder1_AllMealsCombo", "Almond");
 
-			Console.WriteLine("Test1");
 			Assert.Pass();
 		}
 	}
