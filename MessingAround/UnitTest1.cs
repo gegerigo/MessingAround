@@ -3,6 +3,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace MessingAround
 {
@@ -12,8 +14,14 @@ namespace MessingAround
 		[SetUp]
 		public void Setup()
 		{
+			ChromeOptions option = new ChromeOptions();
+			option.AddArguments("start-maximized");
+			option.AddArguments("--disable-gpu");
+			option.AddArguments("--headless");
+
+			new DriverManager().SetUpDriver(new ChromeConfig());
 			Console.WriteLine("Setup");
-			Driver = new ChromeDriver();
+			Driver = new ChromeDriver(option);
 		}
 
 		[Test]
