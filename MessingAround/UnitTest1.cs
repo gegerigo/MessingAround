@@ -1,3 +1,4 @@
+using MessingAround.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -34,7 +35,14 @@ namespace MessingAround
 		{
 			Driver.Navigate().GoToUrl("http://eaapp.somee.com/");
 
-			Assert.Pass();
+			HomePage homePage = new HomePage();
+			LoginPage loginPage = new LoginPage();
+
+			homePage.ClickLogin();
+			loginPage.EnterUserNameAndPassword("admin", "password");
+			loginPage.ClickLogin();
+
+			Assert.That(homePage.IsLogOffExists(), Is.True, "Log off button does not exist.");
 		}
 	}
 }

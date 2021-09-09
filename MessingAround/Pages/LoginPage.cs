@@ -9,8 +9,16 @@ namespace MessingAround.Pages
 {
 	public class LoginPage : DriverHelper
 	{
-		IWebElement lnkLogin => Driver.FindElement(By.LinkText("Login"));
+		IWebElement txtUserName => Driver.FindElement(By.Name("UserName"));
+		IWebElement txtPassword => Driver.FindElement(By.Name("Password"));
+		IWebElement btnLogin => Driver.FindElement(By.CssSelector(".btn-default"));
 
-		public void ClickLogin() => lnkLogin.Click();
+		public void EnterUserNameAndPassword(string userName, string password)
+		{
+			txtUserName.SendKeys(userName);
+			txtPassword.SendKeys(password);
+		}
+
+		public void ClickLogin() => btnLogin.Click();
 	}
 }
